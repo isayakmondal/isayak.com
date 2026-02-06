@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Sayak Mondal</title>
+      <style>
+         body {
+         background: #ffffff;
+         color: #000000;
+         font-family: monospace;
+         margin: 0;
+         padding: 30px;
+         }
+         #terminal {
+         max-width: 90ch;
+         margin: auto;
+         }
+         .cursor {
+         display: inline-block;
+         width: 8px;
+         background: #000000;
+         animation: blink 1s infinite;
+         }
+         @keyframes blink {
+         50% { opacity: 0; }
+         }
+         .hidden {
+         display: none;
+         }
+         .man-page {
+         margin-top: 20px;
+         line-height: 1.4;
+         }
+         .man-header,
+         .man-footer {
+         display: flex;
+         justify-content: space-between;
+         }
+         .section {
+         margin-top: 18px;
+         font-weight: bold;
+         text-transform: uppercase;
+         }
+         p {
+         margin-left: 7ch;
+         }
+         ul {
+         margin-left: 7ch;
+         list-style: none;
+         padding-left: 0;
+         }
+         a {
+         color: #0645ad;
+         text-decoration: none;
+         }
+         a:hover {
+         text-decoration: underline;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="terminal">
+         <div id="command"></div>
+         <div id="manContent" class="man-page hidden">
+            <div class="man-header">
+               <span>SAYAK(1)</span>
+               <span>Mostly Harmless Documentation</span>
+               <span>SAYAK(1)</span>
+            </div>
+            <div class="section">NAME</div>
+            <p>Sayak Mondal - DevOps and Cloud Engineer <a href="mailto:contact@isayak.com">&lt;contact@isayak.com&gt;</a></p>
+            <div class="section">SYNOPSIS</div>
+            <p>Hey, I’m Sayak! I’m a DevOps × Cloud Engineer in India who enjoys
+               technology, photography, good coffee, and music.
+            </p>
+            <div class="section">DESCRIPTION</div>
+            <p><b>Core Values:</b></p>
+            <ul>
+               <li>I value privacy, peace, and intentional living.</li>
+               <li>Not every aspect of my life is shared online. Updates, if shared,
+                  will come directly from me.
+               </li>
+               <br>
+               <li>I prioritise clear communication.</li>
+               <li>
+                  <a href="https://nohello.net/en/" target="_blank">
+                  https://nohello.net/en/
+                  </a>
+               </li>
+               <br>
+               <li>Don't ask to ask, just ask.</li>
+               <li>
+                  <a href="https://dontasktoask.com/" target="_blank">
+                  https://dontasktoask.com/
+                  </a>
+               </li>
+               <br>
+               <li>Courtesy and respect go both ways.</li>
+               <li>A fan of witty, well-timed sarcasm and good humor xD.</li>
+            </ul>
+            <div class="section">SOCIAL</div>
+            <p>LinkedIn:
+               <a href="https://linkedin.com/in/isayakmondal" target="_blank">
+               @isayakmondal
+               </a>
+            </p>
+            <p>GitHub:
+               <a href="https://github.com/isayakmondal" target="_blank">
+               @isayakmondal
+               </a>
+            </p>
+            <p>X:
+               <a href="https://x.com/isayakmondalx" target="_blank">
+               @isayakmondalx
+               </a>
+            </p>
+            <p>Instagram:
+               <a href="https://instagram.com/isayakmondal" target="_blank">
+               @isayakmondal
+               </a>
+            </p>
+            <div class="section">STATUS</div>
+            <p>This manual page is currently a work in progress.</p>
+            <p>Features, content, and formatting may change between revisions.</p>
+            <div class="section">AUTHOR</div>
+            <p> <a href="https://isayak.com" target="_blank">
+               Sayak Mondal </a>
+            </p>
+            <div class="section">COPYRIGHT</div>
+            <p>© <span id="year"></span> Sayak Mondal. All rights reserved.</p>
+            <br><br>
+            <div class="man-footer">
+               <span>SAYAK(1)</span>
+               <span>v1.0 • February 2026 • Inspired by <a href="https://en.wikipedia.org/wiki/Man_page</span>" target="_blank"> wiki/Man_page </a> </span>
+               <span>SAYAK(1)</span>
+            </div>
+         </div>
+      </div>
+      <script>
+         const text = "man sayak";
+         const commandDiv = document.getElementById("command");
+         const manContent = document.getElementById("manContent");
+         
+         let index = 0;
+         
+         function typeCommand() {
+             if (index < text.length) {
+                 commandDiv.innerHTML =
+                     "$ " + text.substring(0, index + 1) + '<span class="cursor"></span>';
+                 index++;
+                 setTimeout(typeCommand, 80);
+             } else {
+                 commandDiv.innerHTML = "$ " + text;
+                 setTimeout(() => {
+                     manContent.classList.remove("hidden");
+                 }, 600);
+             }
+         }
+         
+         typeCommand();
+         
+         document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
+   </body>
+</html>
